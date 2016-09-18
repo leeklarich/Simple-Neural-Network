@@ -11,15 +11,10 @@ public class Neuron {
     public void modifyValue(double d) {this.value += d;}
 
     public double activate() {
-        this.activationValue = psi(value);
+        this.activationValue = sigmoid(value);
         return this.activationValue;
     }
 
-    public double psi(double in) {
-        return 1 / (1 + Math.pow(Math.E, -in));
-    }
-
-    public double deltaPsi(double in) {
-        return psi(in) * (1 - psi(in));
-    }
+    public double sigmoid(double in) { return 1 / (1 + Math.exp(-in)); }
+    public double dSigmoid(double in) { return sigmoid(in) * (1 - sigmoid(in)); }
 }

@@ -12,4 +12,9 @@ public class Connection {
         this.end = b;
         this.weight = Math.random();
     }
+
+    public Neuron getStart() { return this.start; }
+    public Neuron getEnd() { return this.end; }
+    public double getWeight() { return this.weight; }
+    public void setWeight(double d) { this.weight = d; }
 }
