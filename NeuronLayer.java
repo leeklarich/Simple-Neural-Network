@@ -5,16 +5,10 @@ public class NeuronLayer {
     private Neuron[] layer;
 
     public NeuronLayer(int size) {
-        layer = new Neuron[size];
+        this.layer = new Neuron[size + 1];
         for(int i = 0; i < layer.length; i++)
-            layer[i] = new Neuron();
-    }
-
-    public double getSum() {
-        double temp = 0;
-        for(Neuron e: layer)
-            temp += e.getValue();
-        return temp;
+            this.layer[i] = new Neuron();
+        this.layer[layer.length - 1].setValue(1);
     }
 
     public Neuron get(int index) {return this.layer[index];}
@@ -23,11 +17,9 @@ public class NeuronLayer {
     public Neuron[] getLayer() { return this.layer; }
 
     public void receive(double[] ins) {
-        int i = 0;
-        if(ins.length == layer.length) {
-            for(Neuron e : layer) {
-                e.setValue(ins[i]);
-                i++;
+        if(ins.length == this.layer.length - 1) {
+            for (int i = 0; i < ins.length; i++) {
+                 this.layer[i].setValue(ins[i]);
             }
         }
     }
